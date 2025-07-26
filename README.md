@@ -32,8 +32,8 @@ Backend API: **[https://mini-job-board-backend-production.up.railway.app/](https
 
 ## Demo User Credential
 
-username : admin
-password : admin1234
+- User Name : admin
+- Password : admin1234
 
 ---
 
