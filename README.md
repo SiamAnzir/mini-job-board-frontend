@@ -30,37 +30,31 @@ Backend API: **[https://mini-job-board-backend-production.up.railway.app/](https
 
 ---
 
+## Demo User Credential
+
+username : admin
+password : admin1234
+
+---
+
 ## 📦 Installation
 
-### 1. Clone & Install
-
 ````bash
+### 1. Clone & Install
 git clone https://github.com/SiamAnzir/mini-job-board-frontend.git
 cd mini-job-board-frontend
 npm install
-
-
 
 ### 2. Set Environment Variables
 ```bash
 Create a .env.local file in the root directory and add:
 NEXT_PUBLIC_API_BASE_URL="https://mini-job-board-backend-production.up.railway.app"
 
-
-
 ### 3. Start the development server:
 
 ```bash
 npm run dev
 
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
----
-
-## Demo User Credential
-
-username : admin
-password : admin1234
 
 ````
