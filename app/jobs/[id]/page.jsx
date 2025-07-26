@@ -55,12 +55,14 @@ export default function JobDetails({ params }) {
           </p>
         )}
 
-        <p className="text-sm text-gray-500">
-          Deadline:{" "}
-          <span className="font-semibold">
-            {new Date(job.deadline).toLocaleDateString()}
-          </span>
-        </p>
+        {job.deadline && (
+          <p className="text-sm text-gray-500">
+            Deadline:{" "}
+            <span className="font-semibold">
+              {new Date(job.deadline).toLocaleDateString()}
+            </span>
+          </p>
+        )}
       </div>
 
       <div className="bg-white shadow rounded-lg p-6 mb-6">
@@ -68,56 +70,66 @@ export default function JobDetails({ params }) {
         <p className="text-gray-700 leading-relaxed">{job.description}</p>
       </div>
 
-      {job.requiredSkills?.length > 0 && (
-        <div className="bg-white shadow rounded-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-2">Required Skills</h2>
-          <div className="flex flex-wrap gap-2">
-            {job.requiredSkills.map((skill, idx) => (
-              <span
-                key={idx}
-                className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full"
-              >
-                {skill}
-              </span>
-            ))}
+      {job.requiredSkills &&
+        job.requiredSkills.length > 0 &&
+        job.requiredSkills[0].trim() !== "" && (
+          <div className="bg-white shadow rounded-lg p-6 mb-6">
+            <h2 className="text-xl font-semibold mb-2">Required Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              {job.requiredSkills.map((skill, idx) => (
+                <span
+                  key={idx}
+                  className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {job.responsibilities?.length > 0 && (
-        <div className="bg-white shadow rounded-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-2">Responsibilities</h2>
-          <ul className="list-disc pl-6 text-gray-700">
-            {job.responsibilities.map((item, idx) => (
-              <li key={idx}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {job.responsibilities &&
+        job.responsibilities &&
+        job.responsibilities.length > 0 &&
+        job.responsibilities[0].trim() !== "" && (
+          <div className="bg-white shadow rounded-lg p-6 mb-6">
+            <h2 className="text-xl font-semibold mb-2">Responsibilities</h2>
+            <ul className="list-disc pl-6 text-gray-700">
+              {job.responsibilities.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-      <div className="bg-white shadow rounded-lg p-6 mb-6">
-        {job.experience && (
-          <p className="mb-2">
-            <strong>Experience:</strong> {job.experience}
-          </p>
-        )}
-        {job.education && (
-          <p className="mb-2">
-            <strong>Education:</strong> {job.education}
-          </p>
-        )}
-        {job.additionalRequirements && (
-          <p className="mb-2">
-            <strong>Additional Requirements:</strong>{" "}
-            {job.additionalRequirements}
-          </p>
-        )}
-        {job.benefits && (
-          <p className="mb-2">
-            <strong>Benefits:</strong> {job.benefits}
-          </p>
-        )}
-      </div>
+      {job.experience ||
+        job.education ||
+        job.additionalRequirements ||
+        (job.benefits && (
+          <div className="bg-white shadow rounded-lg p-6 mb-6">
+            {job.experience && (
+              <p className="mb-2">
+                <strong>Experience:</strong> {job.experience}
+              </p>
+            )}
+            {job.education && (
+              <p className="mb-2">
+                <strong>Education:</strong> {job.education}
+              </p>
+            )}
+            {job.additionalRequirements && (
+              <p className="mb-2">
+                <strong>Additional Requirements:</strong>{" "}
+                {job.additionalRequirements}
+              </p>
+            )}
+            {job.benefits && (
+              <p className="mb-2">
+                <strong>Benefits:</strong> {job.benefits}
+              </p>
+            )}
+          </div>
+        ))}
 
       <div className="text-center w-full">
         <button
