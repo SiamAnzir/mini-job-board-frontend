@@ -42,7 +42,7 @@ export default function CreateJobPage() {
       setLoading(true);
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/jobs/create`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/jobs`,
         {
           method: "POST",
           headers: {
