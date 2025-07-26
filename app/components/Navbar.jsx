@@ -2,20 +2,33 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "../contexts/AuthContext";
+import { useState } from "react";
+import AuthModal from "./AuthModal";
+import { successToastMessage } from "../utils/toastifyUtils";
 
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const isLoggedIn =
-    typeof window !== "undefined" && localStorage.getItem("token");
+  const { token, logout } = useAuth();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
+  const handleCreateJob = () => {
+    if (token) {
+      router.push("/create-job");
+    } else {
+      setShowAuthModal(true);
+    }
+  };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    logout();
     router.push("/");
+    successToastMessage("Logged Out Successfully");
   };
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-green-800 text-white shadow-sm">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="text-primary font-bold text-xl">
           Job Board
@@ -28,16 +41,13 @@ export default function Navbar() {
           >
             Home
           </Link>
-          {isLoggedIn && <Link href="/jobs/create">Create Job</Link>}
-          {isLoggedIn ? (
-            <button onClick={handleLogout} className="text-red-600">
-              Logout
-            </button>
-          ) : (
-            <>
-              <Link href="/auth/login">Login</Link>
-              <Link href="/auth/register">Register</Link>
-            </>
+          <button onClick={handleCreateJob}>Create Job</button>
+          {token ? <button onClick={handleLogout}>Logout</button> : <></>}
+          {showAuthModal && (
+            <AuthModal
+              onClose={() => setShowAuthModal(false)}
+              onSuccess={() => router.push("/create-job")}
+            />
           )}
         </div>
       </div>
