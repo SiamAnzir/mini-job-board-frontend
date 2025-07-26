@@ -41,14 +41,14 @@ npm install
 
 
 
-2. Set Environment Variables
+### 2. Set Environment Variables
 ```bash
 Create a .env.local file in the root directory and add:
 NEXT_PUBLIC_API_BASE_URL="https://mini-job-board-backend-production.up.railway.app"
 
 
 
-3. Start the development server:
+### 3. Start the development server:
 
 ```bash
 npm run dev
@@ -56,8 +56,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-4. Demo User Credential
+---
+
+## Demo User Credential
 
 username : admin
 password : admin1234
+
 ````
