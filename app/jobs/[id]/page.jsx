@@ -102,34 +102,34 @@ export default function JobDetails({ params }) {
           </div>
         )}
 
-      {job.experience ||
+      {(job.experience ||
         job.education ||
         job.additionalRequirements ||
-        (job.benefits && (
-          <div className="bg-white shadow rounded-lg p-6 mb-6">
-            {job.experience && (
-              <p className="mb-2">
-                <strong>Experience:</strong> {job.experience}
-              </p>
-            )}
-            {job.education && (
-              <p className="mb-2">
-                <strong>Education:</strong> {job.education}
-              </p>
-            )}
-            {job.additionalRequirements && (
-              <p className="mb-2">
-                <strong>Additional Requirements:</strong>{" "}
-                {job.additionalRequirements}
-              </p>
-            )}
-            {job.benefits && (
-              <p className="mb-2">
-                <strong>Benefits:</strong> {job.benefits}
-              </p>
-            )}
-          </div>
-        ))}
+        job.benefits) && (
+        <div className="bg-white shadow rounded-lg p-6 mb-6">
+          {job.experience && (
+            <p className="mb-2">
+              <strong>Experience:</strong> {job.experience}
+            </p>
+          )}
+          {job.education && (
+            <p className="mb-2">
+              <strong>Education:</strong> {job.education}
+            </p>
+          )}
+          {job.additionalRequirements && (
+            <p className="mb-2">
+              <strong>Additional Requirements:</strong>{" "}
+              {job.additionalRequirements}
+            </p>
+          )}
+          {job.benefits && (
+            <p className="mb-2">
+              <strong>Benefits:</strong> {job.benefits}
+            </p>
+          )}
+        </div>
+      )}
 
       <div className="text-center w-full">
         <button
